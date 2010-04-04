@@ -1,0 +1,21 @@
+Kitty Skein
+===========
+
+Kitty Skein is a small, simple library implementing the Skein hash and
+the Threefish tweakable block cipher.
+
+Installation
+============
+
+You need scons to build it. Once you have scons, just type
+
+$ scons
+$ sudo scons install
+
+Speed
+=====
+
+Threefish-512 encrypts at 520 MB/s on a Xeon X5550, in CBC mode. For
+comparison, AES-128 only gets 97 MB/s on the same processor.
+Threefish-512 is 5.36 times faster! Incidentally, this is about
+the same speed claimed in the NIST submission document.
