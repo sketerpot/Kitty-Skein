@@ -1,10 +1,6 @@
 #ifndef __MIX_H
 #define __MIX_X
 
-#include <stdint.h>
-
-uint64_t rotate_left(uint64_t a, unsigned int shift);
-
 /* Take A and rotate it SHIFT bits to the left. Both A and SHIFT
    should be simple variables or constants, for safety. */
 #define ROTATE_LEFT(A, SHIFT) (A << SHIFT | A >> (sizeof(A) * 8 - SHIFT))
