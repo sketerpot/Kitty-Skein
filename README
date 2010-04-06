@@ -19,3 +19,8 @@ Threefish-512 encrypts at 520 MB/s on a Xeon X5550, in CBC mode. For
 comparison, AES-128 only gets 97 MB/s on the same processor.
 Threefish-512 is 5.36 times faster! Incidentally, this is about
 the same speed claimed in the NIST submission document.
+
+Decryption of Threefish-512 is approximately 89% as fast as
+encryption. If you want the maximum speed possible, you may want to
+consider using a chaining mode that relies only on encryption, such as
+CTR mode.

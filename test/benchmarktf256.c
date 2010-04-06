@@ -6,16 +6,16 @@
 
 uint64_t xormsg(uint64_t *msg) {
   int i; uint64_t acc = 0;
-  for (i=0; i < 8; i++)
+  for (i=0; i < 4; i++)
     acc ^= msg[i];
   return acc;
 }
 
 int main(int argc, char **argv) {
   /* Note that these are padded by one for the \0 character */
-  char t_ek[65] = "key of 32,64 or 128 bytes lengthkey of 32,64 or 128 bytes length";
+  char t_ek[65] = "key of 32,64 or 128 bytes length";
   char t_et[17] = "tweak: 16 bytes ";
-  char t_msg[65] = "block of data,same length as keyblock of data,same length as key";
+  char t_msg[65] = "block of data,same length as key";
   int n, i;
 
   if (argc != 3) {
@@ -27,13 +27,13 @@ int main(int argc, char **argv) {
   
   if (argv[1][0] == 'e')
     for (i=0; i < n; i++)
-      threefish512_encrypt_block((uint64_t *)t_msg,
+      threefish256_encrypt_block((uint64_t *)t_msg,
 				 (uint64_t *)t_msg,
 				 (uint64_t *)t_ek,
 				 (uint64_t *)t_et);
   else
     for (i=0; i < n; i++)
-      threefish512_decrypt_block((uint64_t *)t_msg,
+      threefish256_decrypt_block((uint64_t *)t_msg,
 				 (uint64_t *)t_msg,
 				 (uint64_t *)t_ek,
 				 (uint64_t *)t_et);

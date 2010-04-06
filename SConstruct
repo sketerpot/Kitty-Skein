@@ -15,10 +15,13 @@ def require_headers(headers):
 require_headers(Split('stdint.h'))
 env = conf.Finish()
 
-lib_sources = ['src/threefish512.c']
-lib = env.Library(target='kittyskein', source=lib_sources)
-testprog = env.Program('benchmarktf512', source='test/benchmarktf512.c',
-                       LIBS='kittyskein', LIBPATH='.')
-
-Default(lib)
-Default(testprog)
+lib_sources = Glob('src/*.c')
+Default(env.Library(target='kittyskein', source=lib_sources))
+Default(env.Program('benchmarktf512', source='test/benchmarktf512.c',
+                    LIBS='kittyskein', LIBPATH='.'))
+Default(env.Program('benchmarktf256', source='test/benchmarktf256.c',
+                    LIBS='kittyskein', LIBPATH='.'))
+Default(env.Program('testtf512', source='test/testtf512.c',
+                    LIBS='kittyskein', LIBPATH='.'))
+Default(env.Program('testtf256', source='test/testtf256.c',
+                    LIBS='kittyskein', LIBPATH='.'))
